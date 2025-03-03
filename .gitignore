@@ -1,0 +1,25 @@
+# Node dependencies
+node_modules/
+
+# Composer dependencies
+vendor/
+
+# Environment files
+.env
+.env.testing
+
+# Laravel Cache
+bootstrap/cache/
+storage/logs/
+storage/framework/
+storage/debugbar/
+
+# IDE and system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# NPM build cache
+public/hot
+public/storage

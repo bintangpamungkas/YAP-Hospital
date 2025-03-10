@@ -66,6 +66,30 @@ span.arrow:hover .arrow_icon svg {
   background: linear-gradient(90deg, rgba(49, 130, 206, 1) 0%, rgba(56, 178, 172, 1) 100%);
 }
 
+.slides {
+  display: flex;
+}
+.slide {
+  min-width: 100%;
+}
+
+/* Aturan untuk indikator dots */
+.dots {
+  /* Sudah didefinisikan di markup sebagai flex container */
+}
+
+.dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.dot.active {
+  background: rgba(255, 255, 255, 1);
+}
+
 /* @media (min-width: 1024px) {
   .cover {
     border-bottom-right-radius: 256px;

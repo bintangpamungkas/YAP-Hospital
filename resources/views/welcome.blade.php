@@ -38,6 +38,7 @@
 
     gtag('config', 'UA-131505823-4');
   </script>
+  <script src="{{ asset('resources/js/slider.js') }}"></script>
 
 </body>
 

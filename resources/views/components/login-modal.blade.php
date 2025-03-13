@@ -9,12 +9,12 @@
     </div>
     <form>
       <div class="mb-4">
-        <label for="email" class="block text-gray-200 mb-1">Email</label>
-        <input id="email" name="email" type="email" class="w-full border border-gray-400 rounded px-3 py-2 bg-transparent text-white" placeholder="Email">
+        <label for="user_username" class="block text-gray-200 mb-1">Username</label>
+        <input id="user_username" name="user_username" type="text" class="w-full border border-gray-400 rounded px-3 py-2 bg-transparent text-white" placeholder="Username">
       </div>
       <div class="mb-4">
         <label for="password" class="block text-gray-200 mb-1">Password</label>
-        <input id="password" name="password" type="password" class="w-full border border-gray-400 rounded px-3 py-2 bg-transparent text-white" placeholder="Password">
+        <input id="password" name="user_password" type="password" class="w-full border border-gray-400 rounded px-3 py-2 bg-transparent text-white" placeholder="Password">
       </div>
       <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded">Login</button>
     </form>

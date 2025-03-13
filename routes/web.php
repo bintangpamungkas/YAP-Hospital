@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::match(['get', 'post'], '/login', [\App\Http\Controllers\UserController::class, 'login'])->name('login');
+Route::match(['get', 'post'], '/login', [UserController::class, 'login'])->name('login');
+
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+// Route untuk Admin Page, hanya akses jika telah login
+Route::get('/admin/dashboard', function () {
+    return view('admin');
+})->middleware('auth');

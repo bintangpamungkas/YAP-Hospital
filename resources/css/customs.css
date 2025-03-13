@@ -90,6 +90,67 @@ span.arrow:hover .arrow_icon svg {
   background: rgba(255, 255, 255, 1);
 }
 
+/* === Admin Dashboard Styles === */
+.admin-dashboard {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-dashboard header,
+.admin-dashboard nav,
+.admin-dashboard main,
+.admin-dashboard footer {
+  padding: 20px;
+  margin: 10px;
+}
+
+.admin-dashboard header {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+}
+
+.admin-dashboard .container {
+  display: flex;
+}
+
+/* Sidebar */
+.admin-dashboard .sidebar {
+  width: 200px;
+  background-color: #34495e;
+  padding: 20px;
+  color: white;
+}
+.admin-dashboard .sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+.admin-dashboard .sidebar nav ul li a {
+  text-decoration: none;
+  color: #ecf0f1;
+  display: block;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+.admin-dashboard .sidebar nav ul li a:hover {
+  background-color: #2c3e50;
+}
+
+.admin-dashboard main {
+  flex: 1;
+  background-color: #ecf0f1;
+  min-height: 400px;
+  padding: 20px;
+}
+
+.admin-dashboard footer {
+  text-align: center;
+  font-size: 0.9em;
+  color: #7f8c8d;
+  padding: 10px;
+}
+
 /* @media (min-width: 1024px) {
   .cover {
     border-bottom-right-radius: 256px;

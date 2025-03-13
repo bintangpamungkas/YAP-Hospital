@@ -20,16 +20,23 @@ class UserController extends Controller
             ]);
 
             $user = User::where('user_username', $request->input('user_username'))->first();
-
-            if ($user && Hash::check($request->input('user_password'), $user->user_password)) {
+            
+            if ($user && $request->input('user_password') === $user->user_password) {
                 Auth::login($user);
-                // Redirect to a protected route or dashboard
-                return redirect()->intended('/dashboard');
+                // Redirect ke route baru /admin/dashboard ketika login sukses
+                return redirect('/admin/dashboard');
             } else {
                 return back()->withErrors(['Invalid credentials']);
             }
         }
         // For GET request, show the login view
-        return view('auth.login');
+        return abort(401);
+    }
+
+    // Function logout
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect('/');
     }
 }

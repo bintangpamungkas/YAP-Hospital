@@ -16,6 +16,12 @@
 
 <body class="antialiased bg-white font-sans text-gray-900">
 
+  @if(Auth::check())
+    <script>
+      window.location.href = '/admin';
+    </script>
+  @endif
+
   <main class="w-full">
     @include('components.header')
     @include('components.hero')

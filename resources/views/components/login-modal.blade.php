@@ -7,7 +7,9 @@
       <h3 class="text-xl font-bold text-white">Login</h3>
       <button id="closeLoginModal" class="text-gray-300 text-2xl">&times;</button>
     </div>
-    <form>
+    <!-- Ubah tag form agar terkoneksi ke function login pada UserController -->
+    <form method="POST" action="{{ route('login') }}">
+      @csrf
       <div class="mb-4">
         <label for="user_username" class="block text-gray-200 mb-1">Username</label>
         <input id="user_username" name="user_username" type="text" class="w-full border border-gray-400 rounded px-3 py-2 bg-transparent text-white" placeholder="Username">

@@ -4,7 +4,6 @@
     <h2 class="text-xl font-bold text-white">Get in touch with us today! <br class="block md:hidden">Call us on: +1
       562-789-1935</h2>
     <a href="#"
-      class="px-8 py-4 bg-white text-blue-500 rounded inline-block font-semibold md:ml-8 mt-4 md:mt-0">Book
-      Appointment</a>
+      class="px-8 py-4 bg-white text-blue-500 rounded inline-block font-semibold md:ml-8 mt-4 md:mt-0">Join Training</a>
   </div>
 </section>

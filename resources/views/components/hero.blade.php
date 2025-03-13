@@ -8,7 +8,7 @@
           <div class="hero-content absolute inset-0 flex flex-col items-center justify-center text-center text-white">
             <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold leading-tight">Slide 1: Your Beautiful Smile</h1>
             <p class="mt-4 text-xl md:text-2xl">Experience excellence and care at our dental clinic.</p>
-            <a href="#" class="mt-8 px-8 py-4 bg-teal-500 rounded font-semibold">Book Appointment</a>
+            <a href="#" class="mt-8 px-8 py-4 bg-teal-500 rounded font-semibold">Join Training</a>
           </div>
         </div>
         <div class="slide relative">
@@ -16,7 +16,7 @@
           <div class="hero-content absolute inset-0 flex flex-col items-center justify-center text-center text-white">
             <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold leading-tight">Slide 2: Modern Dental Care</h1>
             <p class="mt-4 text-xl md:text-2xl">State-of-the-art treatments to brighten your smile.</p>
-            <a href="#" class="mt-8 px-8 py-4 bg-teal-500 rounded font-semibold">Book Appointment</a>
+            <a href="#" class="mt-8 px-8 py-4 bg-teal-500 rounded font-semibold">Join Training</a>
           </div>
         </div>
         <div class="slide relative">
@@ -24,7 +24,7 @@
           <div class="hero-content absolute inset-0 flex flex-col items-center justify-center text-center text-white">
             <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold leading-tight">Slide 3: Smile with Confidence</h1>
             <p class="mt-4 text-xl md:text-2xl">Your journey to a perfect smile starts here.</p>
-            <a href="#" class="mt-8 px-8 py-4 bg-teal-500 rounded font-semibold">Book Appointment</a>
+            <a href="#" class="mt-8 px-8 py-4 bg-teal-500 rounded font-semibold">Join Training</a>
           </div>
         </div>
       </div>

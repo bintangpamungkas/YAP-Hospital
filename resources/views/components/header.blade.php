@@ -75,7 +75,7 @@
   <div class="flex flex-wrap items-center justify-between py-6">
     <div class="w-1/2 md:w-auto">
       <a href="index.html" class="text-white font-bold text-2xl">
-        DentalPro
+      YAP Hospital
       </a>
     </div>
 
@@ -102,8 +102,12 @@
               Us</a></li>
           <li class="md:ml-6 mt-3 md:mt-0">
             <a class="inline-block font-semibold px-4 py-2 text-white bg-blue-500 md:bg-transparent md:text-white border border-white rounded"
-              href="book-appointment.html">Book
-              Appointment</a>
+              href="book-appointment.html">Join Training</a>
+          </li>
+          <li class="md:ml-6 mt-3 md:mt-0">
+            <a id="openLoginModal" class="inline-block font-semibold px-4 py-2 text-white bg-blue-500 md:bg-transparent md:text-white border border-white rounded" href="#">
+              Login
+            </a>
           </li>
         </ul>
       </nav>

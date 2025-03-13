@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('resources/css/customs.css') }}">
 
-  <title>DentalPro</title>
+  <title>YAP Hospital</title>
 
 </head>
 
@@ -24,6 +24,7 @@
     @include('components.blog')
     @include('components.cta')
     @include('components.footer')
+    @include('components.login-modal') <!-- Add the modal component here -->
   </main>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -39,6 +40,7 @@
     gtag('config', 'UA-131505823-4');
   </script>
   <script src="{{ asset('resources/js/slider.js') }}"></script>
+  <script src="{{ asset('resources/js/login-modal.js') }}"></script>
 
 </body>
 

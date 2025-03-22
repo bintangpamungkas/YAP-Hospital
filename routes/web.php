@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Models\MstTraining;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,8 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $trainings = MstTraining::all();
+    return view('welcome', compact('trainings'));
 });
 
 Route::match(['get', 'post'], '/login', [UserController::class, 'login'])->name('login');

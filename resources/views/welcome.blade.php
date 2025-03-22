@@ -18,7 +18,7 @@
 
   @if(Auth::check())
     <script>
-      window.location.href = '/admin';
+      window.location.href = '/admin/dashboard';
     </script>
   @endif
 
@@ -27,6 +27,7 @@
     @include('components.hero')
     @include('components.about')
     @include('components.testimonials')
+    @include('components.training-calendar')
     @include('components.blog')
     @include('components.cta')
     @include('components.footer')

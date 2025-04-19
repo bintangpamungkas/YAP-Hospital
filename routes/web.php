@@ -35,6 +35,11 @@ Route::resource('admin/training', App\Http\Controllers\TrainingController::class
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('users', UsersController::class);
+    Route::get('profile', [UserController::class, 'editProfile'])
+         ->name('profile')
+         ->middleware('auth');
 });
 
 Route::get('/user/details', [App\Http\Controllers\UserController::class, 'getLoggedInUserDetails']);
+
+Route::patch('/user/update', [UserController::class, 'updateUser'])->middleware('auth');

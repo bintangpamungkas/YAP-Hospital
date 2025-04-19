@@ -57,4 +57,35 @@ class UserController extends Controller
             // ...include other detailed fields as needed...
         ]);
     }
+
+    public function updateUser(Request $request)
+    {
+        $user = Auth::user();
+        if (!$user) {
+            return redirect()->route('login')->withErrors(['error' => 'No logged in user found']);
+        }
+        // \Log::debug('User update request data: ' . json_encode($request->all()));
+        
+        $data = $request->validate([
+            // 'user_name'        => 'sometimes|string|max:255',
+            // 'user_email'       => 'sometimes|email|max:255',
+            // 'user_birth_date'  => 'sometimes|date',
+            // 'user_institution' => 'sometimes|string|max:255',
+        ]);
+        // \Log::debug('Validated data: ' . json_encode($data));
+
+        // Changed: Use $data instead of $request
+        $user->update($data);
+
+        return redirect()->route('admin.profile')->with('success', 'Profile updated successfully');
+    }
+    
+    public function editProfile(Request $request)
+    {
+        $user = Auth::user();
+        if (!$user) {
+            return redirect()->route('login');
+        }
+        return view('components.admin.profile.update', ['user' => $user]);
+    }
 }

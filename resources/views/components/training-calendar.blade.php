@@ -98,25 +98,31 @@
 
   <!-- Ubah disini: modal dengan header, content, dan footer -->
   <div id="trainingModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
-    <div class="bg-white p-6 rounded shadow-lg w-3/4">
+    <div class="bg-white rounded shadow-lg w-3/4">
       <!-- Modal Header -->
-      <div id="modalHeader" style="background-color: rgba(56, 178, 172, 1); padding: 1rem; color: white; width: 100%;" class="mb-4">
+      <div id="modalHeader" style="background-color: rgba(56, 178, 172, 1); padding: 1rem; color: white; width: 100%;" class="p-6 mb-4 rounded-t">
         <h3 class="text-xl font-bold" id="modalTitle">Training Detail</h3>
       </div>
       <!-- Modal Content with 2 columns -->
-      <div id="modalBody" class="flex">
+      <div id="modalBody" class="flex p-6">
         <div class="w-1/3">
-          <img src="https://placehold.co/600x400" alt="Dummy Image">
+          <img id="modalImage" src="https://placehold.co/600x400" alt="Dummy Image" class="cursor-pointer" onclick="openImagePopup(this)">
         </div>
         <div class="w-2/3 pl-4">
           <p id="modalContent"></p>
         </div>
       </div>
       <!-- Modal Footer -->
-      <div id="modalFooter" class="mt-4">
+      <div id="modalFooter" class="p-6 mt-4">
         <button onclick="closeTrainingModal()" class="bg-red-500 text-white px-3 py-1 rounded mx-auto block">Close</button>
       </div>
     </div>
+  </div>
+
+  <!-- Image Popup -->
+  <div id="imagePopup" class="fixed inset-0 flex items-center justify-center hidden" style="z-index: 9999; backdrop-filter: blur(10px);">
+    <img id="popupImage" src="" alt="Enlarged Image" class="max-w-full max-h-full rounded shadow-lg" style="margin-top: 0;">
+    <!-- <button onclick="closeImagePopup()" class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded">Close</button> -->
   </div>
 
   <script>
@@ -141,14 +147,34 @@
         time;
       modal.classList.remove('hidden');
     }
+
     function closeTrainingModal() {
       var modal = document.getElementById('trainingModal');
       modal.classList.add('hidden');
     }
+
+    function openImagePopup(img) {
+      var popup = document.getElementById('imagePopup');
+      var popupImage = document.getElementById('popupImage');
+      popupImage.src = img.src;
+      popup.classList.remove('hidden');
+    }
+
+    function closeImagePopup() {
+      var popup = document.getElementById('imagePopup');
+      popup.classList.add('hidden');
+    }
+
     // Menutup modal ketika area di luar konten diklik
     document.getElementById('trainingModal').addEventListener('click', function(e) {
       if(e.target === this) {
         closeTrainingModal();
+      }
+    });
+
+    document.getElementById('imagePopup').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeImagePopup();
       }
     });
   </script>

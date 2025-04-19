@@ -62,11 +62,23 @@
               if($startMonth) {
                 if($endMonth) {
                   if($monthNum >= $startMonth && $monthNum <= $endMonth) {
-                      $tdAttributes = ' data-training-name="'. $training->training_name .'" data-training-start-date="'. $training->training_start_date .'" data-training-end-date="'. $training->training_end_date .'" onclick="openTrainingModal(this)" style="cursor: pointer;"';
+                      $tdAttributes = ' data-training-name="'. $training->training_name .'"'
+                      . ' data-training-start-date="'. $training->training_start_date .'"'
+                      . ' data-training-end-date="'. $training->training_end_date .'"'
+                      . ' data-training-description="'. $training->training_description .'"'
+                      . ' data-training-location="'. $training->training_location .'"'
+                      . ' data-training-time="'. $training->training_time .'"'
+                      . ' onclick="openTrainingModal(this)" style="cursor: pointer;"';
                   }
                 } else {
                   if($monthNum === $startMonth) {
-                      $tdAttributes = ' data-training-name="'. $training->training_name .'" data-training-start-date="'. $training->training_start_date .'" data-training-end-date="'. $training->training_end_date .'" onclick="openTrainingModal(this)" style="cursor: pointer;"';
+                      $tdAttributes = ' data-training-name="'. $training->training_name .'"'
+                      . ' data-training-start-date="'. $training->training_start_date .'"'
+                      . ' data-training-end-date="'. $training->training_end_date .'"'
+                      . ' data-training-description="'. $training->training_description .'"'
+                      . ' data-training-location="'. $training->training_location .'"'
+                      . ' data-training-time="'. $training->training_time .'"'
+                      . ' onclick="openTrainingModal(this)" style="cursor: pointer;"';
                   }
                 }
               }
@@ -89,7 +101,7 @@
     <div class="bg-white p-6 rounded shadow-lg w-1/3">
       <h3 class="text-xl font-bold mb-4" id="modalTitle">Training Detail</h3>
       <p id="modalContent"></p>
-      <button onclick="closeTrainingModal()" class="mt-4 bg-red-500 text-white px-3 py-1 rounded">Close</button>
+      <button onclick="closeTrainingModal()" class="mt-4 bg-red-500 text-white px-3 py-1 rounded mx-auto block">Close</button>
     </div>
   </div>
 
@@ -99,10 +111,20 @@
       var title = document.getElementById('modalTitle');
       var content = document.getElementById('modalContent');
       var name = el.getAttribute('data-training-name');
+      var description = el.getAttribute('data-training-description');
+      var location = el.getAttribute('data-training-location');
       var start = el.getAttribute('data-training-start-date');
       var end = el.getAttribute('data-training-end-date');
-      title.textContent = name;
-      content.innerHTML = '<strong>Start Date:</strong> ' + start + '<br><strong>End Date:</strong> ' + end;
+      // Format tanggal menjadi "11 DESEMBER 2022" (semua uppercase)
+      var formattedStart = new Date(start).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }).toUpperCase();
+      var formattedEnd = new Date(end).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }).toUpperCase();
+      var time = '<strong>WAKTU PELAKSANAAN:</strong><br>Mulai : ' + formattedStart + '<br>Selesai : ' + formattedEnd + '<br><br>';
+      title.textContent = 'Training Details';
+      content.innerHTML =
+        '<strong>NAMA PELATIHAN:</strong><br> ' + name + '<br><br>' +
+        '<strong>URAIAN PELATIHAN:</strong><br> ' + description + '<br><br>' +
+        '<strong>LOKASI:</strong><br> ' + location + '<br><br>' +
+        time;
       modal.classList.remove('hidden');
     }
     function closeTrainingModal() {

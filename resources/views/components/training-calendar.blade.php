@@ -84,7 +84,8 @@
     </tbody>
   </table>
 
-  <div id="trainingModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+  <!-- Ubah disini: tambahkan kelas z-50 untuk menampilkan modal di atas -->
+  <div id="trainingModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
     <div class="bg-white p-6 rounded shadow-lg w-1/3">
       <h3 class="text-xl font-bold mb-4" id="modalTitle">Training Detail</h3>
       <p id="modalContent"></p>

@@ -96,12 +96,26 @@
     </tbody>
   </table>
 
-  <!-- Ubah disini: tambahkan kelas z-50 untuk menampilkan modal di atas -->
+  <!-- Ubah disini: modal dengan header, content, dan footer -->
   <div id="trainingModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
-    <div class="bg-white p-6 rounded shadow-lg w-1/3">
-      <h3 class="text-xl font-bold mb-4" id="modalTitle">Training Detail</h3>
-      <p id="modalContent"></p>
-      <button onclick="closeTrainingModal()" class="mt-4 bg-red-500 text-white px-3 py-1 rounded mx-auto block">Close</button>
+    <div class="bg-white p-6 rounded shadow-lg w-3/4">
+      <!-- Modal Header -->
+      <div id="modalHeader" style="background-color: rgba(56, 178, 172, 1); padding: 1rem; color: white; width: 100%;" class="mb-4">
+        <h3 class="text-xl font-bold" id="modalTitle">Training Detail</h3>
+      </div>
+      <!-- Modal Content with 2 columns -->
+      <div id="modalBody" class="flex">
+        <div class="w-1/3">
+          <img src="https://placehold.co/600x400" alt="Dummy Image">
+        </div>
+        <div class="w-2/3 pl-4">
+          <p id="modalContent"></p>
+        </div>
+      </div>
+      <!-- Modal Footer -->
+      <div id="modalFooter" class="mt-4">
+        <button onclick="closeTrainingModal()" class="bg-red-500 text-white px-3 py-1 rounded mx-auto block">Close</button>
+      </div>
     </div>
   </div>
 

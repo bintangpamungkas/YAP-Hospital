@@ -1,8 +1,10 @@
 <div class="bg-white w-64 p-6 h-full">
-    <div class="flex items-center mb-8">
-        <img alt="Logo" class="mr-2" height="32" src="https://placehold.co/32x32" width="32"/>
-        <span class="text-xl font-bold">TailAdmin</span>
-    </div>
+    <a href="/admin/dashboard">
+        <div class="flex items-center mb-8">
+            <img alt="Logo" class="mr-2" height="32" src="https://placehold.co/32x32" width="32"/>
+            <span class="text-xl font-bold">TailAdmin</span>
+        </div>
+    </a>
     <nav>
         <ul>
             <li class="mb-4">

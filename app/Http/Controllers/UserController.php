@@ -39,4 +39,22 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+    // New function to get detailed data of the currently logged-in user
+    public function getLoggedInUserDetails(Request $request)
+    {
+        $user = Auth::user();
+        if (!$user) {
+            return response()->json(['error' => 'No logged-in user found.'], 404);
+        }
+        return response()->json([
+            'user_id'           => $user->user_id,
+            'user_name'         => $user->user_name,
+            'user_email'        => $user->user_email,
+            'user_birth_date'   => $user->user_birth_date,
+            'user_institution'  => $user->user_institution,
+            'user_last_login'   => $user->user_last_login,
+            // ...include other detailed fields as needed...
+        ]);
+    }
 }

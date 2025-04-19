@@ -36,3 +36,5 @@ Route::resource('admin/training', App\Http\Controllers\TrainingController::class
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('users', UsersController::class);
 });
+
+Route::get('/user/details', [App\Http\Controllers\UserController::class, 'getLoggedInUserDetails']);

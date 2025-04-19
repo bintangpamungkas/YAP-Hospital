@@ -20,7 +20,7 @@
     </div>
     <!-- Add transition classes to main content -->
     <div id="mainContent" class="flex-1 ml-64 transition-all duration-300 ease-in-out">
-        <!-- Header as a separate container with transition -->
+        <!-- Header as a separate container with dynamic user details -->
         <div id="headerContainer" class="p-6 bg-gray-200 transition-all duration-300 ease-in-out">
             <div class="flex justify-between items-center mb-0 w-full">
                 <div class="flex items-center">
@@ -30,18 +30,20 @@
                     <!-- <input class="bg-gray-200 rounded-full px-4 py-2 w-64" placeholder="Search or type command..." type="text"/> -->
                 </div>
                 <div class="flex items-center">
-                    <!-- <button class="text-gray-600 mr-4">
-                        <i class="fas fa-moon"></i>
-                    </button> -->
-                    <!-- <button class="text-gray-600 mr-4">
-                        <i class="fas fa-bell"></i>
-                    </button> -->
                     <img alt="User Avatar" class="rounded-full" height="32" src="https://placehold.co/32x32" width="32"/>
-                    <div class="relative inline-block group">
-                        <span class="cursor-pointer">&nbsp;&nbsp;Musharof</span>
-                        <div class="absolute right-0 top-full mt-1 w-40 bg-white rounded shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all">
+                    <div class="relative inline-block">
+                        <!-- Replace static label with dynamic container -->
+                        <span id="userTrigger" onclick="toggleUserDropdown()" class="cursor-pointer">
+                            &nbsp;&nbsp;<span id="userNameDisplay">Loading...</span>
+                        </span>
+                        <div id="userDropdown" class="absolute right-0 top-full mt-1 w-72 bg-white rounded shadow-lg opacity-0 invisible pointer-events-none transition-all duration-300 ease-in-out">
+                            <div class="px-4 py-2 border-b border-gray-200">
+                                <div class="font-bold text-gray-800" id="userFullName">Loading...</div>
+                                <div class="text-sm text-gray-500" id="userEmailDisplay">Loading...</div>
+                            </div>
                             <a href="/profile" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
-                            <form action="{{ route('logout') }}" method="POST">
+                            <div class="border-t border-gray-200 my-0"></div>
+                            <form action="{{ route('logout') }}" method="POST" class="mb-0">
                                 @csrf
                                 <button type="submit" class="w-full text-left block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</button>
                             </form>
@@ -62,15 +64,50 @@
     var mainContent = document.getElementById('mainContent');
 
     if (sidebar.classList.contains('-translate-x-full')) {
-      // Show sidebar: add left margin back to main content
       sidebar.classList.remove('-translate-x-full');
       mainContent.classList.add('ml-64');
     } else {
-      // Hide sidebar: remove left margin for full width
       sidebar.classList.add('-translate-x-full');
       mainContent.classList.remove('ml-64');
     }
   }
+
+  function toggleUserDropdown() {
+    var dropdown = document.getElementById('userDropdown');
+    if(dropdown.classList.contains('opacity-0')){
+      dropdown.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
+      dropdown.classList.add('opacity-100', 'visible', 'pointer-events-auto');
+    } else {
+      dropdown.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
+      dropdown.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+    }
+  }
+  
+  // Hide dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    var dropdown = document.getElementById('userDropdown');
+    var trigger = document.getElementById('userTrigger');
+    // If click is outside both the trigger and the dropdown, hide dropdown
+    if (!trigger.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
+      dropdown.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+    }
+  });
+
+  // Fetch logged in user details and update header
+  document.addEventListener('DOMContentLoaded', function() {
+      fetch('/user/details')
+          .then(response => response.json())
+          .then(data => {
+              if (data.user_name) {
+                  document.getElementById('userNameDisplay').innerText = data.user_name;
+                  // Assuming full name is same as user_name; update if you have a separate field.
+                  document.getElementById('userFullName').innerText = data.user_name;
+                  document.getElementById('userEmailDisplay').innerText = data.user_email;
+              }
+          })
+          .catch(error => console.error('Error fetching user details:', error));
+  });
 </script>
 </body>
 </html>

@@ -57,8 +57,21 @@
                   $cellContent = date('d M', strtotime($training->training_start_date));
                 }
               }
+              // Jika cell merupakan bagian dari periode training aktif, tambahkan data attributes dan klik event ke seluruh cell
+              $tdAttributes = "";
+              if($startMonth) {
+                if($endMonth) {
+                  if($monthNum >= $startMonth && $monthNum <= $endMonth) {
+                      $tdAttributes = ' data-training-name="'. $training->training_name .'" data-training-start-date="'. $training->training_start_date .'" data-training-end-date="'. $training->training_end_date .'" onclick="openTrainingModal(this)" style="cursor: pointer;"';
+                  }
+                } else {
+                  if($monthNum === $startMonth) {
+                      $tdAttributes = ' data-training-name="'. $training->training_name .'" data-training-start-date="'. $training->training_start_date .'" data-training-end-date="'. $training->training_end_date .'" onclick="openTrainingModal(this)" style="cursor: pointer;"';
+                  }
+                }
+              }
             @endphp
-            <td class="{{ $tdClass }}">
+            <td class="{{ $tdClass }}" {!! $tdAttributes !!}>
               {!! $cellContent !!}
             </td>
           @endforeach
@@ -70,4 +83,36 @@
       @endforelse
     </tbody>
   </table>
+
+  <div id="trainingModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white p-6 rounded shadow-lg w-1/3">
+      <h3 class="text-xl font-bold mb-4" id="modalTitle">Training Detail</h3>
+      <p id="modalContent"></p>
+      <button onclick="closeTrainingModal()" class="mt-4 bg-red-500 text-white px-3 py-1 rounded">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function openTrainingModal(el) {
+      var modal = document.getElementById('trainingModal');
+      var title = document.getElementById('modalTitle');
+      var content = document.getElementById('modalContent');
+      var name = el.getAttribute('data-training-name');
+      var start = el.getAttribute('data-training-start-date');
+      var end = el.getAttribute('data-training-end-date');
+      title.textContent = name;
+      content.innerHTML = '<strong>Start Date:</strong> ' + start + '<br><strong>End Date:</strong> ' + end;
+      modal.classList.remove('hidden');
+    }
+    function closeTrainingModal() {
+      var modal = document.getElementById('trainingModal');
+      modal.classList.add('hidden');
+    }
+    // Menutup modal ketika area di luar konten diklik
+    document.getElementById('trainingModal').addEventListener('click', function(e) {
+      if(e.target === this) {
+        closeTrainingModal();
+      }
+    });
+  </script>
 </div>

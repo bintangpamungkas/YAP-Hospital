@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersController;
 use App\Models\MstTraining;
 
 /*
@@ -28,3 +29,10 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/admin/dashboard', function () {
     return view('admin');
 })->middleware('auth');
+
+// Updated resource route with name prefix "admin"
+Route::resource('admin/training', App\Http\Controllers\TrainingController::class, ['as' => 'admin']);
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('users', UsersController::class);
+});
